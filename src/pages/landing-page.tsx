@@ -2,8 +2,10 @@ import React from 'react';
 import instgramLogo from '/assets/instagram.svg';
 import whatsappLogo from '/assets/whatsapp.svg'; 
 import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const LandingPage = () => {
+    const navigate = useNavigate()
   return (
     <div className="flex flex-col justify-center items-center min-h-screen gradient-bg">
       <div className="max-w-lg w-full bg-white shadow-md rounded-lg overflow-hidden">
@@ -21,7 +23,7 @@ const LandingPage = () => {
             </a>
           </div>
           <div className='mt-5 flex justify-center'>
-            <Button className='text-white gradient-bg hover:gradient-bg-reverse'>להתחלה</Button>
+            <Button className='text-white gradient-bg hover:gradient-bg-reverse' onClick={()=>navigate('/health-declaration-form/checking-form-submissions-id')}>להתחלה</Button>
           </div>
         </div>
       </div>

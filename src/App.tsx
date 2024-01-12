@@ -5,6 +5,9 @@ import * as z from 'zod';
 import { formSchema } from './lib/schema/formSchema';
 import fontkit from '@pdf-lib/fontkit'; // Import fontkit
 import LandingPage from './pages/landing-page';
+import {BrowserRouter , Route , Routes} from 'react-router-dom'
+import CheckingPage from './pages/checking-page';
+import FormPage from './pages/form-page';
 
 const App: React.FC = () => {
   // const [formData, setFormData] = useState({
@@ -196,7 +199,13 @@ const App: React.FC = () => {
   //   </div>
   // );
   return (
-    <LandingPage/>
+    <BrowserRouter>
+    <Routes>
+      <Route element={<LandingPage/>} index/>
+      <Route element={<CheckingPage/>} path='/health-declaration-form/checking-form-submissions-id'/>
+      <Route element={<FormPage/>} path='/health-declaration-form/form'/>
+    </Routes>
+    </BrowserRouter>
   )
 };
 

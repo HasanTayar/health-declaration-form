@@ -26,3 +26,6 @@ export interface FormComponentsProps {
     formData:FormDataType,
     handleInputChange:(event:ChangeEvent<HTMLInputElement>)=> void;
 }
+export interface checkForExistingPDFProps{
+    id:string,
+}

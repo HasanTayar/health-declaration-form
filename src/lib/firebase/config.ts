@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_KEY,
@@ -11,5 +12,6 @@ const firebaseConfig = {
     measurementId:import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 }
 const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app)
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const analytics = getAnalytics(app);
