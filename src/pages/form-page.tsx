@@ -1,4 +1,4 @@
-import FormComponents from "@/components/Forms/form";
+import FormComponents  from "@/components/Forms/form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { useLocation } from "react-router-dom";
@@ -9,7 +9,7 @@ const FormPage = () => {
   const id = queryParams.get("id");
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen gradient-bg">
+    <div className="flex flex-col justify-center items-center min-h-screen bg-red-50">
       <Card>
         <CardHeader>
           <CardTitle className="max-w-lg w-full  rounded-lg overflow-hidden">

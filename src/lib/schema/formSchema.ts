@@ -4,7 +4,7 @@ export const formSchema = z.object({
     firstName:z.string().min(2),
     secondName:z.string().min(2),
     ID: z.string().min(100000000).max(999999999),
-    Age:z.number(),
+    Age:z.string(),
     Q1:z.boolean(),
     Q2:z.boolean(),
     Q3:z.boolean(),

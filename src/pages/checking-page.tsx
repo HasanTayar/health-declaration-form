@@ -26,9 +26,8 @@ const CheckingPage = () => {
     }
   }
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen gradient-bg">
-      <Card>
-        <CardHeader>
+    <div className="flex flex-col justify-center items-center min-h-screen bg-red-50">
+      <Card>       <CardHeader>
           <CardTitle className="max-w-lg w-full  rounded-lg overflow-hidden">
             <h2 className="text-xl font-semibold text-center mb-4">
             <img src="/assets/logo.jpg" alt="Logo" className="object-contain mx-auto" />
