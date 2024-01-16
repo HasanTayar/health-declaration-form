@@ -1,31 +1,48 @@
-import { ChangeEvent } from "react"
-
- interface FormDataType{
-    firstName:string,
-    secondName:string,
-    ID:string,
-    Age:string,
-    Q1: boolean,
-    Q2: boolean,
-    Q3: boolean,
-    Q4: boolean,
-    Q5: boolean,
-    Q6: boolean,
-    Q7: boolean,
-    Q8: boolean,
-    Q9: boolean,
-    Q10: boolean,
-    Q11: boolean,
-    Q12: boolean,
-    Q13: boolean,
-    Q14: boolean,
-    date:Date,
-    signature:string
+export interface checkForExistingPDFProps {
+  id: string;
 }
-export interface FormComponentsProps {
-    formData:FormDataType,
-    handleInputChange:(event:ChangeEvent<HTMLInputElement>)=> void;
-}
-export interface checkForExistingPDFProps{
-    id:string,
-}
+export const formQuestion = [
+  { question: " ? בל תלחממ לבוס התאש ךל רמא ךלש אפורה םאה" },
+  {
+    question:
+      "-)הטמ תוטרופמה תויורשפאהמ תחא לכב ךתבושת תא ןמס אנא( הזחב םיבאכ שח התא םאה",
+    q1: "?החונמ ןמזב",
+    q2: "?םוי-םויב הרגיש תויוליעפ ךלהמב",
+    q3: "?תינפוג תוליעפ עצבמ התאש ןמזב",
+  },
+  {
+    question:
+      "-)הטמ תוטרופמה תויורשפאהמ תחא לכב ךתבושת תא ןמס אנא( תפלוחה הנשה ךלהמב םאה",
+    q1: " רתי תמישנמ העבנ תרוחרחסה םא -אל ןמס ?תרוחרחס בקע לקשמ יוויש תדביא ",
+    q2: "?ךתרכה תא תדביא",
+  },
+  {
+    question:
+      "םינורחאה םישדוחה תשולשב ןכלו המתסאה תלחממ לבוס התאש ןחבא אפור םאה",
+    q1: "?יתפורת לופיטל תקקזנ",
+    q2: "?םיפוצפיצ וא המישנ רצוקמ תלבס",
+  },
+  {
+    question:
+      "םינורחאה םישדוחה תשולשב ןכלו המתסאה תלחממ לבוס התאש ןחבא אפור םאה  ",
+    q1: "?יתפורת לופיטל תקקזנ",
+    q2: "?םיפוצפיצ וא המישנ רצוקמ תלבס",
+  },
+  {
+    question: " רטפנ הנושאר הברק תגרדמ ךתחפשמ ינבמ דחא םאה",
+    q1: "   ?בל  תלחממ ",
+    q2: " ?םדקומ ליגב ימואתפ תווממ",
+  },
+  {
+    question:
+      "החגשה תחת קר תינפוג תוליעפ עצבל תונורחאה םינשה -5ב ךל רמא ךלש אפורה םאה ?תיאופר",
+  },
+  {
+    question:
+      "וא עונמל היושעו ליעל תולאשב תרכזנ הניאש ,)תינורכ( העובק הלחממ לבוס ךניה םאה   ?תינפוג תוליעפ עוציבב ךתוא ליבגהל",
+  },
+  {
+    question:
+      " ?ןוכיסב ןויריה רדגוה םדוק ןויריה לכ וא הזה ןויריהה םאה :ןוירהב םישנל",
+  },
+];

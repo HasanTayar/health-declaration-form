@@ -3,7 +3,7 @@ import * as z from 'zod';
 export const formSchema = z.object({
     firstName:z.string().min(2),
     secondName:z.string().min(2),
-    ID: z.number().min(100000000).max(999999999),
+    ID: z.string().min(100000000).max(999999999),
     Age:z.number(),
     Q1:z.boolean(),
     Q2:z.boolean(),
