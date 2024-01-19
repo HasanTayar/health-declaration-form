@@ -32,7 +32,7 @@ const Q7 = () => {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(saveData)}
-          className="space-y-6 "
+          className="max-w-lg mx-auto p-4 space-y-6"
           dir="rtl"
         >
           <FormField
@@ -40,36 +40,37 @@ const Q7 = () => {
             name="Q12"
             render={({ field }) => (
               <FormItem className="space-y-3">
-                <FormLabel>
-                  האם הינך סובל ממחלה קבועה , שאינה נזכרת בשאלות לעיל ועשויה
+                <FormLabel className="text-base md:text-lg">
+                  האם הינך סובל ממחלה קבועה, שאינה נזכרת בשאלות לעיל ועשויה
                   למנוע או להגביל אותך בביצוע פעילות גופנית?
                 </FormLabel>
                 <FormControl>
-                  <RadioGroup
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                    className="flex  flex-col space-y-1"
-                  >
-                    <FormItem className="flex justify-end  space-x-3 space-y-0">
-                      <FormLabel className="font-normal">לא</FormLabel>
-
-                      <FormControl>
-                        <RadioGroupItem value="לא" />
-                      </FormControl>
+                  <RadioGroup {...field} className="space-y-2">
+                    <FormItem className="flex items-center justify-end space-x-reverse space-x-2">
+                      <FormLabel className="font-bold pr-2">לא</FormLabel>
+                      <RadioGroupItem
+                        value="לא"
+                        className="form-radio h-5 w-5"
+                      />
                     </FormItem>
-                    <FormItem className=" flex justify-end space-x-3 space-y-0">
-                      <FormLabel className="font-normal">כן</FormLabel>
-
-                      <FormControl>
-                        <RadioGroupItem value="כן" />
-                      </FormControl>
+                    <FormItem className="flex items-center justify-end space-x-reverse space-x-2">
+                      <FormLabel className="font-bold pr-2">כן</FormLabel>
+                      <RadioGroupItem
+                        value="כן"
+                        className="form-radio h-5 w-5"
+                      />
                     </FormItem>
                   </RadioGroup>
                 </FormControl>
               </FormItem>
             )}
           />
-          <Button type="submit">הבא</Button>
+          <Button
+            type="submit"
+            className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700"
+          >
+            הבא
+          </Button>
         </form>
       </Form>
     </FormHeader>

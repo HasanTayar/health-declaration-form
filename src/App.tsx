@@ -19,6 +19,8 @@ import {
   Q8,
 } from "./components/Forms/YesNoQuestion";
 import SignatureForm from "./components/Forms/signature-form";
+import DonePage from "./pages/done-page";
+import path from "path";
 
 const App: React.FC = () => {
   // const [formData, setFormData] = useState({
@@ -258,6 +260,10 @@ const App: React.FC = () => {
           <Route
             element={<SignatureForm />}
             path="/health-declaration-form/signature-form"
+          />
+          <Route
+            element={<DonePage />}
+            path="/health-declaration-form/done-page"
           />
         </Routes>
       </BrowserRouter>

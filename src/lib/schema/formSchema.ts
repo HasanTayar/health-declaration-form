@@ -35,8 +35,8 @@ export const Q7Schema = z.object({
   Q12: z.enum(["לא", "כן"]),
 });
 export const Q8Schema = z.object({
-  Q12: z.enum(["לא", "כן", "לא-בהריון"]),
+  Q13: z.enum(["לא", "כן", "לא-בהריון"]),
 });
 export const SignatureSchema = z.object({
-  Signature: z.string(),
+  Signature: z.any(),
 });

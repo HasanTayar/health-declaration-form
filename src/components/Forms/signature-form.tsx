@@ -22,15 +22,11 @@ const SignatureForm = () => {
     resolver: zodResolver(SignatureSchema),
   });
 
-  const saveData = (data: z.infer<typeof SignatureSchema>) => {
-    setState({ ...state, ...data });
-    navigate("/health-declaration-form/yes-no-form/q-6");
-  };
-
-  const formatIntoPng = () => {
+  const saveData = () => {
     if (sigCanvas.current) {
-      const dataURL = sigCanvas.current.toDataURL();
-      console.log(dataURL);
+      const signatureDataUrl = sigCanvas.current.toDataURL();
+      setState({ ...state, Signature: signatureDataUrl });
+      navigate("/health-declaration-form/done-page");
     }
   };
 
@@ -71,9 +67,7 @@ const SignatureForm = () => {
               )}
             />
             <div className="flex justify-between mt-4">
-              <Button type="submit" onClick={formatIntoPng}>
-                הבא
-              </Button>
+              <Button type="submit">הבא</Button>
               <Button
                 type="button"
                 variant="destructive"
