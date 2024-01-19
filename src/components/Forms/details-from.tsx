@@ -6,7 +6,7 @@ import { detailsFormSchema } from "@/lib/schema/formSchema";
 import * as z from "zod";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import FormHeader from "@/common/form-headr";
+import FormHeader from "@/layout/form-header";
 import { useNavigate } from "react-router-dom";
 const DetailsFrom = () => {
   const navigate = useNavigate();
@@ -24,25 +24,28 @@ const DetailsFrom = () => {
 
   const saveData = (data: z.infer<typeof detailsFormSchema>) => {
     setState({ ...state, ...data });
-    console.log("state:", state);
-    console.log("data:", data);
-    navigate("/health-declaration-form/yes-no-form");
+
+    navigate("/health-declaration-form/yes-no-form/q-1");
   };
 
   return (
     <FormHeader>
-      <div className="text-right" dir="rtl">
+      <div className="max-w-md mx-auto p-4" dir="rtl">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(saveData)} className="space-y-8">
+          <form onSubmit={form.handleSubmit(saveData)} className="space-y-4">
             <FormField
               control={form.control}
               name="first_name"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="font-bold">שם פרטי</FormLabel>
-                  <FormControl>
-                    <Input {...field} placeholder="שם פרטי" />
-                  </FormControl>
+                <FormItem className="flex flex-col">
+                  <FormLabel className="font-bold mb-2 text-base">
+                    שם פרטי
+                  </FormLabel>
+                  <Input
+                    {...field}
+                    placeholder="שם פרטי"
+                    className="border p-2 rounded"
+                  />
                 </FormItem>
               )}
             />
@@ -50,11 +53,13 @@ const DetailsFrom = () => {
               control={form.control}
               name="second_name"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="font-bold">שם משפחה</FormLabel>
-                  <FormControl>
-                    <Input {...field} placeholder="שם משפחה" />
-                  </FormControl>
+                <FormItem className="flex flex-col">
+                  <FormLabel className="font-bold mb-2">שם משפחה</FormLabel>
+                  <Input
+                    {...field}
+                    placeholder="שם משפחה"
+                    className="border p-2 rounded text-base"
+                  />
                 </FormItem>
               )}
             />
@@ -62,15 +67,24 @@ const DetailsFrom = () => {
               control={form.control}
               name="age"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="font-bold">גיל</FormLabel>
+                <FormItem className="flex flex-col">
+                  <FormLabel className="font-bold mb-2">גיל</FormLabel>
                   <FormControl>
-                    <Input {...field} placeholder="גיל" />
+                    <Input
+                      {...field}
+                      placeholder="גיל"
+                      className="border p-2 rounded text-base"
+                    />
                   </FormControl>
                 </FormItem>
               )}
             />
-            <Button type="submit"> הבא</Button>
+            <Button
+              type="submit"
+              className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-700"
+            >
+              הבא
+            </Button>
           </form>
         </Form>
       </div>

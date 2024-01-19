@@ -2,15 +2,23 @@ import React, { useState } from "react";
 import { PDFDocument } from "pdf-lib";
 import { saveAs } from "file-saver";
 import * as z from "zod";
-import { formSchema } from "./lib/schema/formSchema";
 import fontkit from "@pdf-lib/fontkit"; // Import fontkit
 import LandingPage from "./pages/landing-page";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import FormPage from "./pages/form-page";
 import DetailsFrom from "./components/Forms/details-from";
 import IdForm from "./components/Forms/id-form";
 import { FormProvider } from "./context/form-state";
-import YesNoQuestion from "./components/Forms/yes-no-question-form";
+import {
+  Q1,
+  Q2,
+  Q3,
+  Q4,
+  Q5,
+  Q6,
+  Q7,
+  Q8,
+} from "./components/Forms/YesNoQuestion";
+import SignatureForm from "./components/Forms/signature-form";
 
 const App: React.FC = () => {
   // const [formData, setFormData] = useState({
@@ -216,8 +224,40 @@ const App: React.FC = () => {
             path="/health-declaration-form/personal-info"
           />
           <Route
-            element={<YesNoQuestion />}
-            path="/health-declaration-form/yes-no-form"
+            element={<Q1 />}
+            path="/health-declaration-form/yes-no-form/q-1"
+          />
+          <Route
+            element={<Q2 />}
+            path="/health-declaration-form/yes-no-form/q-2"
+          />
+          <Route
+            element={<Q3 />}
+            path="/health-declaration-form/yes-no-form/q-3"
+          />
+          <Route
+            element={<Q4 />}
+            path="/health-declaration-form/yes-no-form/q-4"
+          />
+          <Route
+            element={<Q5 />}
+            path="/health-declaration-form/yes-no-form/q-5"
+          />
+          <Route
+            element={<Q6 />}
+            path="/health-declaration-form/yes-no-form/q-6"
+          />
+          <Route
+            element={<Q7 />}
+            path="/health-declaration-form/yes-no-form/q-7"
+          />
+          <Route
+            element={<Q8 />}
+            path="/health-declaration-form/yes-no-form/q-8"
+          />
+          <Route
+            element={<SignatureForm />}
+            path="/health-declaration-form/signature-form"
           />
         </Routes>
       </BrowserRouter>
