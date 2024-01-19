@@ -1,8 +1,11 @@
-import React from 'react'
+import FormHeader from '@/common/form-headr'
 
 const YesNoQuestion = () => {
   return (
-    <div>YesNoQuestion</div>
+    <FormHeader>
+      <div>YesNoQuestion</div>
+    </FormHeader>
+
   )
 }
 

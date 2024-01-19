@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
-import { PDFDocument } from 'pdf-lib';
-import { saveAs } from 'file-saver';
-import * as z from 'zod';
-import { formSchema } from './lib/schema/formSchema';
-import fontkit from '@pdf-lib/fontkit'; // Import fontkit
-import LandingPage from './pages/landing-page';
-import {BrowserRouter , Route , Routes} from 'react-router-dom'
-import CheckingPage from './pages/checking-page';
-import FormPage from './pages/form-page';
-import DetailsFrom from './components/Forms/details-from';
+import React, { useState } from "react";
+import { PDFDocument } from "pdf-lib";
+import { saveAs } from "file-saver";
+import * as z from "zod";
+import { formSchema } from "./lib/schema/formSchema";
+import fontkit from "@pdf-lib/fontkit"; // Import fontkit
+import LandingPage from "./pages/landing-page";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import FormPage from "./pages/form-page";
+import DetailsFrom from "./components/Forms/details-from";
+import IdForm from "./components/Forms/id-form";
+import { FormProvider } from "./context/form-state";
+import YesNoQuestion from "./components/Forms/yes-no-question-form";
 
 const App: React.FC = () => {
   // const [formData, setFormData] = useState({
@@ -30,7 +32,7 @@ const App: React.FC = () => {
   //   Q12: false,
   //   Q13: false,
   //   Q14: false,
-    
+
   //   date: new Date().toISOString().split('T')[0],
   // });
   // const [signature, setSignature] = useState('');
@@ -70,7 +72,7 @@ const App: React.FC = () => {
 
   //   try {
   //     const originalPdfBytes = await fetch('/assets/test.pdf').then(res => res.arrayBuffer());
-      
+
   //     const pdfDoc = await PDFDocument.load(originalPdfBytes);
   //     pdfDoc.registerFontkit(fontkit); // Register fontkit with PDFDocument
 
@@ -200,14 +202,27 @@ const App: React.FC = () => {
   //   </div>
   // );
   return (
-    <BrowserRouter>
-    <Routes>
-      <Route element={<LandingPage/>} index/>
-      <Route element={<CheckingPage/>} path='/health-declaration-form/checking-form-submissions-id'/>
-      <Route element={<DetailsFrom/>} path='/health-declaration-form/personal-info'/>
-    </Routes>
-    </BrowserRouter>
-  )
+    <FormProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<LandingPage />} index />
+
+          <Route
+            element={<IdForm />}
+            path="/health-declaration-form/checking-form-submissions-id"
+          />
+          <Route
+            element={<DetailsFrom />}
+            path="/health-declaration-form/personal-info"
+          />
+          <Route
+            element={<YesNoQuestion />}
+            path="/health-declaration-form/yes-no-form"
+          />
+        </Routes>
+      </BrowserRouter>
+    </FormProvider>
+  );
 };
 
 export default App;

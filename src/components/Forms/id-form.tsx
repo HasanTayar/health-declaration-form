@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, FormControl, FormField, FormItem, FormLabel } from '../ui/form';
-import { useForm } from 'react-hook-form';
+import { FormProvider, useForm } from 'react-hook-form';
 import { useFormState } from '@/context/form-state';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { idFormSchema } from '@/lib/schema/formSchema';
@@ -24,39 +24,37 @@ const IdForm = () => {
 
     const saveData = async (data: z.infer<typeof idFormSchema>) => {
         const id = data.ID
-        const exists = await checkForExistingPDF({id})
-        if(exists)
-        return true
+        const exists = await checkForExistingPDF({ id })
+        if (exists)
+            return true
         setState({ ...state, ...data });
         console.log(data)
         navigate('/health-declaration-form/personal-info')
     };
 
     return (
-        
-            <FormHeader>
-                <div className='text-right' dir='rtl'>
-            <Form {...form}>
-                <form onSubmit={form.handleSubmit(saveData)} className='space-y-8'>
+        <FormHeader>
+            <div className='text-right' dir='rtl'>
+                <Form {...form}>
+                    <form onSubmit={form.handleSubmit(saveData)} className='space-y-8'>
 
-                    <FormField
-                        control={form.control}
-                        name='ID'
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel className='font-bold'>ת.ז</FormLabel>
-                                <FormControl>
-                                    <Input {...field} placeholder='ת.ז' />
-                                </FormControl>
-                            </FormItem>
-                        )}
-                    />
-                    <Button type='submit'> הבא</Button>
-                </form>
-            </Form>
+                        <FormField
+                            control={form.control}
+                            name='ID'
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel className='font-bold'>ת.ז</FormLabel>
+                                    <FormControl>
+                                        <Input {...field} placeholder='ת.ז' />
+                                    </FormControl>
+                                </FormItem>
+                            )}
+                        />
+                        <Button type='submit'> הבא</Button>
+                    </form>
+                </Form>
             </div>
-            </FormHeader>
-        
+        </FormHeader>
     );
 }
 
