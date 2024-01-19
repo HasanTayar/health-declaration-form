@@ -8,6 +8,7 @@ import LandingPage from './pages/landing-page';
 import {BrowserRouter , Route , Routes} from 'react-router-dom'
 import CheckingPage from './pages/checking-page';
 import FormPage from './pages/form-page';
+import DetailsFrom from './components/Forms/details-from';
 
 const App: React.FC = () => {
   // const [formData, setFormData] = useState({
@@ -203,7 +204,7 @@ const App: React.FC = () => {
     <Routes>
       <Route element={<LandingPage/>} index/>
       <Route element={<CheckingPage/>} path='/health-declaration-form/checking-form-submissions-id'/>
-      <Route element={<FormPage/>} path='/health-declaration-form/form'/>
+      <Route element={<DetailsFrom/>} path='/health-declaration-form/personal-info'/>
     </Routes>
     </BrowserRouter>
   )

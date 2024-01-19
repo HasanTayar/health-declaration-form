@@ -1,4 +1,4 @@
-import FormComponents  from "@/components/Forms/form";
+import DetailsForm  from "@/components/Forms/details-from";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { useLocation } from "react-router-dom";
@@ -23,7 +23,7 @@ const FormPage = () => {
             </h2>
           </CardTitle>
           <CardContent>
-            <FormComponents id={id} />
+            <DetailsForm  />
           </CardContent>
         </CardHeader>
       </Card>
