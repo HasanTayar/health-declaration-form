@@ -1,7 +1,8 @@
 import { PDFDocument, PDFTextField, PDFCheckBox } from "pdf-lib";
 import fontkit from "@pdf-lib/fontkit";
-import { storage } from "../config";
+import { storage, db } from "../config";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
 
 interface FormData {
   [key: string]: string | boolean;
@@ -52,6 +53,15 @@ export const savingPdfToDataBase = async (
     }-${currentDate.getFullYear()}`;
     dateField.setText(formattedDate);
 
+    // Add two years to the current date
+    const expiryDate = new Date(currentDate);
+    expiryDate.setFullYear(expiryDate.getFullYear() + 2);
+
+    // Format the expiry date as a string
+    const formattedExpiryDate = `${expiryDate.getDate()}-${
+      expiryDate.getMonth() + 1
+    }-${expiryDate.getFullYear()}`;
+
     const processedFormData = processFormData(formData);
     for (const fieldName of Object.keys(processedFormData)) {
       if (fieldName !== "Signature") {
@@ -93,7 +103,14 @@ export const savingPdfToDataBase = async (
     const pdfRef = ref(storage, `pdfs/${pdfFileName}`);
     await uploadBytes(pdfRef, pdfBytes);
     const downloadUrl = await getDownloadURL(pdfRef);
-    console.log("PDF uploaded. Download URL:", downloadUrl);
+    await addDoc(collection(db, "FormSubmissions"), {
+      id: formData.ID,
+      firstName: formData.first_name,
+      secondName: formData.second_name,
+      submissionDate: formattedDate,
+      pdfDownloadUrl: downloadUrl,
+      expiredAt: formattedExpiryDate,
+    });
   } catch (error) {
     console.error("Error processing PDF:", error);
   }
