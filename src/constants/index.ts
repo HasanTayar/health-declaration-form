@@ -7,3 +7,8 @@ export type UserType = {
   id: string;
   expiredAt: string;
 };
+export type AdminType = {
+  firstName: string;
+  secondName: string;
+  id: string;
+};

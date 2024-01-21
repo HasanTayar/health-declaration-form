@@ -47,6 +47,19 @@ const LandingPage = () => {
             </Button>
           </div>
         </div>
+        <footer className="flex items-center justify-center rounded-full">
+          <a
+            href="https://www.quantumpinnaclematrix.tech"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="/assets/poweredByQPM.png"
+              alt="Powered by QPM"
+              className="w-32 md:w-48 hover:scale-105 transition-transform"
+            />
+          </a>
+        </footer>
       </div>
     </div>
   );
