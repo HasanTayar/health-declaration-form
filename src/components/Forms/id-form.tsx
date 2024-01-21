@@ -14,19 +14,27 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import error from "/assets/error.gif";
+import { UserType } from "@/constants";
 
 const IdForm = () => {
   const navigate = useNavigate();
   const formState = useFormState();
   const { state, setState } = formState;
   const [isExits, setIsExits] = useState(false);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState<UserType>();
   const form = useForm<z.infer<typeof idFormSchema>>({
     resolver: zodResolver(idFormSchema),
     defaultValues: {
       ID: "",
     },
   });
+  const sendMessageOnWhatsApp = () => {
+    const message = `שלום קרם,\nשמי ${user?.firstName} ${user?.secondName} עם ת.ז: ${user?.id}. אני רוצה לשנות או לעדכן את הטופס שלי. נא לתת לי אפשרות בבקשה.`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappLink = `https://wa.me/972529530800?text=${encodedMessage}`;
+
+    window.open(whatsappLink, "_blank", "noopener noreferrer");
+  };
 
   const saveData = async (data: z.infer<typeof idFormSchema>) => {
     const id = data.ID;
@@ -47,14 +55,23 @@ const IdForm = () => {
       {isExits ? (
         <>
           <div className="flex items-center justify-center">
-            <img src={error} alt="Error" className="h-20" />
+            <img src={error} alt="Error" className="h-20 md:h-24 lg:h-28" />
           </div>
-          <h1 className="text-right font-bold">שלום, {user.firstName}</h1>
-          <p className="text-right">
-            תעודת הזהות שלך עם המספר {user.id} כבר רשומה במערכת. תוקפה של הטופס
-            יפוג בתאריך {user.expiredAt}. אנא בדוק את פרטי הטופס או צור קשר
+          <h1 className="text-right font-bold text-base md:text-lg lg:text-xl">
+            שלום, {user?.firstName}
+          </h1>
+          <p className="text-right text-sm md:text-base lg:text-lg">
+            תעודת הזהות שלך עם המספר {user?.id} כבר רשומה במערכת. תוקפה של הטופס
+            יפוג בתאריך {user?.expiredAt}. אנא בדוק את פרטי הטופס או צור קשר
             לעדכון נתונים.
           </p>
+          <Button
+            variant="outline"
+            onClick={sendMessageOnWhatsApp}
+            className="w-full md:w-auto"
+          >
+            לפניה מהירה
+          </Button>
         </>
       ) : (
         <div className="max-w-md mx-auto p-4">

@@ -1,4 +1,4 @@
-import { checkForExistingPDFProps } from "@/constants";
+import { UserType, checkForExistingPDFProps } from "@/constants";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../config";
 
@@ -14,22 +14,23 @@ export const checkForExistingPDF = async ({
     return null;
   }
 };
-export const getTheUserDetails = async (id: string): Promise<any | null> => {
+export const getTheUserDetails = async (
+  id: string
+): Promise<UserType | undefined> => {
   try {
     const q = query(collection(db, "FormSubmissions"), where("id", "==", id));
     const querySnapshot = await getDocs(q);
 
     if (querySnapshot.empty) {
-      return null; // No document found
+      return;
     }
 
-    // Extract the document data
     const doc = querySnapshot.docs[0];
-    const data = doc.data();
+    const data = doc.data() as UserType;
 
-    return data; // Return the document data
+    return data;
   } catch (error) {
     console.error("Error retrieving user details:", error);
-    return null;
+    return;
   }
 };
