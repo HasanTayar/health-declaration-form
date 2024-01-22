@@ -15,6 +15,8 @@ import {
 } from "./components/Forms/YesNoQuestion";
 import SignatureForm from "./components/Forms/signature-form";
 import DonePage from "./pages/done-page";
+import AdminAuthPage from "./pages/admin-auth";
+import AdminDashBoard from "./pages/admin-dashboard";
 
 const App: React.FC = () => {
   return (
@@ -71,6 +73,8 @@ const App: React.FC = () => {
             element={<DonePage />}
             path="/health-declaration-form/done-page"
           />
+          <Route element={<AdminAuthPage />} path="/admin-auth-page/:id" />
+          <Route element={<AdminDashBoard />} path="/dashboard-admin" />
         </Routes>
       </BrowserRouter>
     </FormProvider>

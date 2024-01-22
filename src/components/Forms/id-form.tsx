@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import error from "/assets/error.gif";
 import { UserType } from "@/constants";
+import { checkIfAdmin } from "@/lib/firebase/services/check-if-admin";
 
 const IdForm = () => {
   const navigate = useNavigate();
@@ -38,6 +39,11 @@ const IdForm = () => {
 
   const saveData = async (data: z.infer<typeof idFormSchema>) => {
     const id = data.ID;
+    const adminData = await checkIfAdmin(id);
+    if (adminData) {
+      navigate(`/admin-auth-page/${id}`);
+      return;
+    }
     const exists = await checkForExistingPDF({ id });
     if (exists) {
       setIsExits(true);

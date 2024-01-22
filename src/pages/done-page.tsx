@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import success from "/assets/success.gif";
 import { savingPdfToDataBase } from "@/lib/firebase/services/saving-pdf-file";
 import { useFormState } from "@/context/form-state";
@@ -33,17 +33,18 @@ const transformFormData = (formData: FormData): FormData => {
 const DonePage = () => {
   const { state } = useFormState();
 
+  const saveFunctionCalled = useRef(false);
+
   useEffect(() => {
-    if (state) {
+    if (state && !saveFunctionCalled.current) {
+      saveFunctionCalled.current = true;
       const transformedState = transformFormData(state as FormData);
       savingPdfToDataBase(transformedState).catch(console.error);
     }
   }, [state]);
-
-  // Calculate the date two years from now
   const twoYearsLater = new Date();
   twoYearsLater.setFullYear(twoYearsLater.getFullYear() + 2);
-  const validUntil = twoYearsLater.toLocaleDateString("he-IL"); // Format the date in Hebrew locale
+  const validUntil = twoYearsLater.toLocaleDateString("he-IL");
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen bg-red-50">

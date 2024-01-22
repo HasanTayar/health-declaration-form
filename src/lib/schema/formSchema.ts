@@ -40,3 +40,10 @@ export const Q8Schema = z.object({
 export const SignatureSchema = z.object({
   Signature: z.any(),
 });
+export const AdminAuthSchema = z.object({
+  email: z
+    .string()
+    .email({ message: "כתובת המייל אינה תקינה" })
+    .nonempty({ message: "נדרשת כתובת מייל" }),
+  password: z.string(),
+});

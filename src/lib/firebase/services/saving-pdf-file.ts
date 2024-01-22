@@ -2,7 +2,7 @@ import { PDFDocument, PDFTextField, PDFCheckBox } from "pdf-lib";
 import fontkit from "@pdf-lib/fontkit";
 import { storage, db } from "../config";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { collection, addDoc, Timestamp } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 
 interface FormData {
   [key: string]: string | boolean;
