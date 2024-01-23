@@ -20,7 +20,7 @@ const LandingPage = () => {
           </h2>
           <div className="flex justify-center space-x-4">
             <a
-              href="https://www.instagram.com/muscle.factorygym/"
+              href="https://www.instagram.com/she.gym1/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -54,7 +54,7 @@ const LandingPage = () => {
             rel="noopener noreferrer"
           >
             <img
-              src="/assets/poweredByQPM.png"
+              src="/assets/poweredByQPM.svg"
               alt="Powered by QPM"
               className="w-32 md:w-48 hover:scale-105 transition-transform"
             />

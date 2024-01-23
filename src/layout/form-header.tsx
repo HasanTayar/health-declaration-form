@@ -21,7 +21,7 @@ const FormHeader = ({ children }: { children: React.ReactNode }) => {
             rel="noopener noreferrer"
           >
             <img
-              src="/assets/poweredByQPM.png"
+              src="/assets/poweredByQPM.svg"
               alt="Powered by QPM"
               className="w-32 md:w-48 hover:scale-105 transition-transform"
             />

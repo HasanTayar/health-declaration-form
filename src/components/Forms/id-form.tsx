@@ -32,7 +32,7 @@ const IdForm = () => {
   const sendMessageOnWhatsApp = () => {
     const message = `שלום קרם,\nשמי ${user?.firstName} ${user?.secondName} עם ת.ז: ${user?.id}. אני רוצה לשנות או לעדכן את הטופס שלי. נא לתת לי אפשרות בבקשה.`;
     const encodedMessage = encodeURIComponent(message);
-    const whatsappLink = `https://wa.me/972529530800?text=${encodedMessage}`;
+    const whatsappLink = `https://wa.me/972545711727?text=${encodedMessage}`;
 
     window.open(whatsappLink, "_blank", "noopener noreferrer");
   };
